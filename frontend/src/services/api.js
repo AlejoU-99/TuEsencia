@@ -1,4 +1,4 @@
-const CATALOGO_URL = "/catalogo.json";
+const CATALOGO_URL = `${import.meta.env.BASE_URL}catalogo.json`;
 
 let catalogoCache = null;
 
