@@ -5,12 +5,17 @@ import Catalogo from "./pages/Catalogo";
 import ProductoDetalle from "./pages/ProductoDetalle";
 import Nosotros from "./pages/Nosotros";
 import Footer from "./components/Footer";
+import WhatsAppFlotante from "./components/WhatsAppFlotante";
+
 
 function ScrollManager() {
     const location = useLocation();
 
     useEffect(() => {
-        if (location.pathname.startsWith("/producto/") || location.pathname === "/nosotros") {
+        if (
+            location.pathname.startsWith("/producto/") ||
+            location.pathname === "/nosotros"
+        ) {
             window.scrollTo(0, 0);
         }
     }, [location.pathname]);
@@ -18,12 +23,15 @@ function ScrollManager() {
     return null;
 }
 
+
 function App() {
     return (
         <HashRouter>
+
             <ScrollManager />
 
             <Routes>
+
                 <Route
                     path="/"
                     element={
@@ -53,9 +61,14 @@ function App() {
                         </>
                     }
                 />
+
             </Routes>
+
+            <WhatsAppFlotante />
+
         </HashRouter>
     );
 }
+
 
 export default App;

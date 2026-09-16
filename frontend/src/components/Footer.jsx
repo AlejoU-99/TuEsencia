@@ -1,4 +1,5 @@
 import verticalLogo from "../assets/vertical 2.png";
+import { Link } from "react-router-dom";
 
 
 function InstagramIcon() {
@@ -166,13 +167,16 @@ function Footer() {
 
                         <nav className="footer-navigation">
 
-                            <a href="/">
-                                Catálogo
-                            </a>
+                            <Link
+    to="/"
+    onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+>
+    Catálogo
+</Link>
 
-                            <a href="/#nosotros">
-                                Nosotros
-                            </a>
+<Link to="/nosotros">
+    Nosotros
+</Link>
 
                         </nav>
 

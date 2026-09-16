@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
     useSearchParams
 } from "react-router-dom";
@@ -21,16 +21,44 @@ function Catalogo() {
 
 
     /* =========================================
+       REFERENCIA DEL CATÁLOGO
+    ========================================= */
+
+    const catalogoRef = useRef(null);
+
+
+    /* =========================================
+       SCROLL AL INICIO DEL CATÁLOGO
+    ========================================= */
+
+    function subirAlCatalogo() {
+
+        requestAnimationFrame(() => {
+
+            catalogoRef.current?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        });
+
+    }
+
+
+    /* =========================================
        ESTADO INICIAL DESDE LA URL
     ========================================= */
 
     const paginaInicial =
         Number(searchParams.get("pagina")) || 1;
 
+
     const busquedaInicial =
         searchParams.get("busqueda") || "";
 
+
     const filtrosIniciales = {
+
         categoria:
             searchParams.get("categoria") || "",
 
@@ -51,7 +79,9 @@ function Catalogo() {
 
         precio_max:
             searchParams.get("precio_max") || ""
+
     };
+
 
     const ordenInicial =
         searchParams.get("orden") || "default";
@@ -80,8 +110,10 @@ function Catalogo() {
     const [totalProductos, setTotalProductos] =
         useState(0);
 
+
     const [totalPaginas, setTotalPaginas] =
         useState(1);
+
 
     const [pagina, setPagina] =
         useState(paginaInicial);
@@ -118,8 +150,10 @@ function Catalogo() {
     const [cargando, setCargando] =
         useState(true);
 
+
     const [cargandoOpciones, setCargandoOpciones] =
         useState(true);
+
 
     const [error, setError] =
         useState(null);
@@ -135,60 +169,82 @@ function Catalogo() {
 
 
         if (pagina > 1) {
-            nuevosParametros.pagina = pagina;
+
+            nuevosParametros.pagina =
+                pagina;
+
         }
 
 
         if (busqueda) {
-            nuevosParametros.busqueda = busqueda;
+
+            nuevosParametros.busqueda =
+                busqueda;
+
         }
 
 
         if (filtros.categoria) {
+
             nuevosParametros.categoria =
                 filtros.categoria;
+
         }
 
 
         if (filtros.tipo) {
+
             nuevosParametros.tipo =
                 filtros.tipo;
+
         }
 
 
         if (filtros.color) {
+
             nuevosParametros.color =
                 filtros.color;
+
         }
 
 
         if (filtros.estilo) {
+
             nuevosParametros.estilo =
                 filtros.estilo;
+
         }
 
 
         if (filtros.material) {
+
             nuevosParametros.material =
                 filtros.material;
+
         }
 
 
         if (filtros.precio_min) {
+
             nuevosParametros.precio_min =
                 filtros.precio_min;
+
         }
 
 
         if (filtros.precio_max) {
+
             nuevosParametros.precio_max =
                 filtros.precio_max;
+
         }
 
 
         if (orden !== "default") {
+
             nuevosParametros.orden =
                 orden;
+
         }
 
 
@@ -280,6 +336,7 @@ function Catalogo() {
                     err.message
                 );
 
+
             } finally {
 
                 setCargando(false);
@@ -352,6 +409,7 @@ function Catalogo() {
                 setError(
                     err.message
                 );
+
 
             } finally {
 
@@ -436,6 +494,25 @@ function Catalogo() {
 
 
         setPagina(1);
+
+    }
+
+
+    /* =========================================
+       CAMBIAR PÁGINA
+    ========================================= */
+
+    function cambiarPagina(nuevaPagina) {
+
+        if (nuevaPagina === pagina) {
+            return;
+        }
+
+
+        setPagina(nuevaPagina);
+
+
+        subirAlCatalogo();
 
     }
 
@@ -598,6 +675,7 @@ function Catalogo() {
     if (error) {
 
         return (
+
             <>
 
                 <Header
@@ -614,6 +692,7 @@ function Catalogo() {
                             No pudimos cargar el catálogo
                         </h2>
 
+
                         <p>
                             {error}
                         </p>
@@ -623,12 +702,14 @@ function Catalogo() {
                 </main>
 
             </>
+
         );
 
     }
 
 
     return (
+
         <>
 
             <Header
@@ -676,7 +757,10 @@ function Catalogo() {
                     PRODUCTOS
                 ===================================== */}
 
-                <section className="catalogo-productos">
+                <section
+                    className="catalogo-productos"
+                    ref={catalogoRef}
+                >
 
 
                     {/* =================================
@@ -1004,7 +1088,7 @@ function Catalogo() {
                                 }
 
                                 onCambiarPagina={
-                                    setPagina
+                                    cambiarPagina
                                 }
 
                             />
@@ -1018,7 +1102,9 @@ function Catalogo() {
             </main>
 
         </>
+
     );
+
 }
 
 

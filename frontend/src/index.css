@@ -85,21 +85,15 @@ body {
 ========================================= */
 
 .site-header {
-
     width: 100%;
-
     border-bottom: 1px solid var(--color-borde);
-
     background: rgba(255, 255, 255, 0.94);
-
-    position: sticky;
-
+    position: fixed;
     top: 0;
-
+    left: 0;
+    right: 0;
     z-index: 100;
-
     backdrop-filter: blur(16px);
-
 }
 
 
@@ -3541,6 +3535,12 @@ body {
         );
 }
 
+.catalogo-productos {
+    width: min(1400px, calc(100% - 64px));
+    margin: 0 auto;
+    scroll-margin-top: 110px;
+}
+
 .nosotros-hero-contenedor {
     position: relative;
     z-index: 2;
@@ -4458,4 +4458,378 @@ body {
 .producto-whatsapp:hover
 .producto-whatsapp-flecha {
     transform: translateX(3px);
+}
+
+
+.header-search input[type="search"]::-webkit-search-cancel-button,
+.mobile-search-input input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+}
+
+.header-search input[type="search"]::-ms-clear,
+.mobile-search-input input[type="search"]::-ms-clear {
+    display: none;
+}
+
+.header-search-submit,
+.mobile-search-submit,
+.mobile-search-close {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #4b352c;
+
+    cursor: pointer;
+    border-radius: 50%;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.header-search-submit svg,
+.mobile-search-submit svg {
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+}
+
+.mobile-search-close {
+    font-size: 21px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+@media (hover: hover) {
+    .header-search-submit:hover,
+    .mobile-search-submit:hover,
+    .mobile-search-close:hover {
+        background: #f3ece7;
+        color: #9b744b;
+    }
+}
+
+
+.mobile-search-submit {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    background: transparent;
+
+    color: #4b352c;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.mobile-search-submit svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+}
+
+.mobile-search-submit:hover {
+    color: #b28a50;
+}
+
+/* WhatsApp flotante */
+
+.whatsapp-flotante {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #3a2418;
+  border-radius: 50%;
+
+  z-index: 1100;
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.whatsapp-flotante svg {
+  width: 27px;
+  height: 27px;
+  fill: #d7b98c;
+}
+
+.whatsapp-flotante:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 800px) {
+  .whatsapp-flotante {
+    right: 16px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .whatsapp-flotante svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* =========================================================
+   FOOTER — RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .catalogo-productos {
+    scroll-margin-top: 82px;
+}
+
+    /* -----------------------------------------
+       BLOQUE PRINCIPAL
+       Logo | Síguenos | Explorar
+       ----------------------------------------- */
+
+    .footer-main {
+        display: grid;
+        grid-template-columns: 1.15fr 1fr 1fr;
+        align-items: start;
+
+        gap: 24px;
+
+        padding: 38px 0 32px;
+    }
+
+    /* Logo */
+
+    .footer-brand {
+        grid-column: auto;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .footer-logo {
+        width: 125px;
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Columnas */
+
+    .footer-navigation,
+    .footer-social {
+        margin-top: 0;
+        gap: 12px;
+    }
+
+    .footer-heading {
+        font-size: 9px;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+
+    .footer-navigation a,
+    .footer-social-item {
+        font-size: 12px;
+    }
+
+    .footer-navigation {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-social {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-social-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-social-item svg {
+        width: 17px;
+        height: 17px;
+        flex-shrink: 0;
+    }
+
+
+    /* -----------------------------------------
+       BENEFICIOS
+       Tres columnas
+       ----------------------------------------- */
+
+    .footer-trust {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 15px;
+
+        padding: 20px 0;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .footer-trust-item {
+        display: flex;
+        align-items: flex-start;
+
+        gap: 9px;
+
+        padding: 0;
+    }
+
+    .footer-trust-item svg {
+        width: 19px;
+        height: 19px;
+
+        flex-shrink: 0;
+    }
+
+    .footer-trust-item strong {
+        display: block;
+        font-size: 11px;
+        line-height: 1.3;
+    }
+
+    .footer-trust-item span {
+        display: block;
+        margin-top: 3px;
+
+        font-size: 9px;
+        line-height: 1.35;
+    }
+
+
+    /* -----------------------------------------
+       PIE LEGAL
+       ----------------------------------------- */
+
+    .footer-bottom {
+        display: flex;
+
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 16px 0;
+
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+
+        font-size: 9px;
+    }
+
+    .footer-bottom > * {
+        margin: 0;
+    }
+
+    .footer-bottom > *:last-child {
+        text-align: right;
+    }
+}
+
+
+/* =========================================================
+   FOOTER — CELULARES PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .footer-main {
+        grid-template-columns: 1.05fr 1fr 1fr;
+        gap: 15px;
+
+        padding: 30px 0 25px;
+    }
+
+    .footer-logo {
+        width: 105px;
+    }
+
+    .footer-heading {
+        font-size: 8px;
+        letter-spacing: 1.7px;
+    }
+
+    .footer-navigation,
+    .footer-social {
+        gap: 10px;
+    }
+
+    .footer-navigation a,
+    .footer-social-item {
+        font-size: 11px;
+    }
+
+    .footer-social-item {
+        gap: 6px;
+    }
+
+    .footer-social-item svg {
+        width: 15px;
+        height: 15px;
+    }
+
+
+    .footer-trust {
+        gap: 10px;
+        padding: 18px 0;
+    }
+
+    .footer-trust-item {
+        gap: 6px;
+    }
+
+    .footer-trust-item svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .footer-trust-item strong {
+        font-size: 9px;
+    }
+
+    .footer-trust-item span {
+        font-size: 8px;
+    }
+
+    .footer-bottom {
+        font-size: 8px;
+        gap: 10px;
+    }
 }

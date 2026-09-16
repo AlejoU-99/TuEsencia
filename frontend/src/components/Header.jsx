@@ -304,20 +304,23 @@ function Header({ busqueda, onBuscar }) {
                                 onSubmit={manejarSubmit}
                             >
 
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    aria-hidden="true"
-                                >
-
-                                    <circle
-                                        cx="11"
-                                        cy="11"
-                                        r="6.5"
-                                    />
-
-                                    <path d="m16 16 5 5" />
-
-                                </svg>
+                                <button
+    type="submit"
+    className="header-search-submit"
+    aria-label="Buscar"
+>
+    <svg
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+    >
+        <circle
+            cx="11"
+            cy="11"
+            r="6.5"
+        />
+        <path d="m16 16 5 5" />
+    </svg>
+</button>
 
 
                                 <input
@@ -348,14 +351,15 @@ function Header({ busqueda, onBuscar }) {
                                 )}
 
 
+
                                 <button
-                                    type="button"
-                                    className="header-search-close"
-                                    aria-label="Cerrar búsqueda"
-                                    onClick={cerrarBuscador}
-                                >
-                                    ×
-                                </button>
+    type="button"
+    className="mobile-search-close"
+    aria-label="Cerrar búsqueda"
+    onClick={cerrarBuscador}
+>
+    ×
+</button>
 
                             </form>
 
@@ -500,20 +504,24 @@ function Header({ busqueda, onBuscar }) {
 
                     <div className="mobile-search-input">
 
-                        <svg
-                            viewBox="0 0 24 24"
-                            aria-hidden="true"
-                        >
+    <button
+        type="submit"
+        className="mobile-search-submit"
+        aria-label="Buscar"
+    >
+        <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+        >
+            <circle
+                cx="11"
+                cy="11"
+                r="6.5"
+            />
 
-                            <circle
-                                cx="11"
-                                cy="11"
-                                r="6.5"
-                            />
-
-                            <path d="m16 16 5 5" />
-
-                        </svg>
+            <path d="m16 16 5 5" />
+        </svg>
+    </button>
 
 
                         <input
